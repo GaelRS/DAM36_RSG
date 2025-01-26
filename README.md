@@ -1,4 +1,4 @@
-# DAM36_RSG_315404
+# DAM36
 Repositori para subir prácticas de Aplicaciones Móviles
 - 👤 Rosas Gael
 - 📄 315404
