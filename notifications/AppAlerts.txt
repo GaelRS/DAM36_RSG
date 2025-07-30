@@ -1,0 +1,57 @@
+import { Alert, Button, Platform, StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+  const simpleAlert = () => {
+    Alert.alert('Titulo de alerta', 'Este es el mensaje de mi alerta');
+  }
+  const multipleButtonAlert = () => {
+    Alert.alert('Titulo de alerta','Selecciona una opcion', [{
+      text: 'Cancelar',
+      onPress: () => console.log('Boton cancel presionado'),
+      style: 'cancel'
+    },{
+      text: 'Aceptar',
+      onPress: () => console.log('Boton aceptar presionado')
+    },{
+      text: 'More Options',
+      onPress: () => console.log('Boton mas opciones presionado'),
+    }])
+  }
+
+  //Solo para IOS
+  const promptAlert = () => {
+    if(Platform.OS === 'ios'){
+      Alert.prompt('Alerta con Input','Ingresa tu nombre',(text)=>console.log(text), 'plain-text', '', 'default')
+    }else{
+      Alert.alert('Error', 'Esta alerta solo funciona en IOS ya que tiene un input'),
+      [{text: 'Ok'}]
+    }
+  }
+  return (
+    <View style={styles.container}>
+      <Text>Demo de alertas en Reac Native</Text>
+      <View style={styles.buttonContainer}>
+        <Button title='Alerta Simple' onPress={simpleAlert}/>
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button title='Alerta Miltiples Botones' onPress={multipleButtonAlert}/>
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button title='Alerta con input' onPress={promptAlert}/>
+      </View>
+    </View>
+  );}
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonContainer: {
+    marginVertical: 20,
+
+  },
+});
